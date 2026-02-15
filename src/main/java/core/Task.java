@@ -28,6 +28,8 @@ public class Task {
     /** Zeitpunkt der Ausführung */
     private final Instant executeAt;
 
+    //private final Runnable action; to do
+
     /**
      * Erstellt eine neue Aufgabe mit automatisch generierter ID.
      *
