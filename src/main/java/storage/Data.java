@@ -29,20 +29,46 @@ public class Data {
      * @param scheduler Scheduler, in den die Aufgaben geladen werden
      */
     public static void loadFile(Scheduler scheduler) {
-        try(BufferedReader reader = new BufferedReader(new FileReader("tasks.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("tasks.json"))) {
             String line;
+            UUID id = null;
+            String name = null;
+            int priority = 0;
+            Instant executeAt = null;
             while ((line = reader.readLine()) != null) {
-                String[] parts = line.split("\t");
-                UUID id = UUID.fromString(parts[0]);
-                String name = parts[1];
-                int priority = Integer.parseInt(parts[2]);
-                Instant time = Instant.parse(parts[3]);
-                scheduler.addTask(id, name, priority, time);
+                line = line.trim();
+                // ID-Zeile: "123e4567-e89b-12d3-a456-426614174000": {
+                if (line.startsWith("\"") && line.contains("\": {")) {
+                    String key = line.substring(1, line.indexOf("\":"));
+                    id = UUID.fromString(key);
+                }
+                // Name-Zeile
+                else if (line.startsWith("\"name\"")) {
+                    name = line.split(":")[1].trim()
+                            .replace("\"", "")
+                            .replace(",", "");
+                }
+                // Priority-Zeile
+                else if (line.startsWith("\"priority\"")) {
+                    priority = Integer.parseInt(
+                            line.split(":")[1].trim().replace(",", "")
+                    );
+                }
+                // executeAt-Zeile
+                else if (line.startsWith("\"executeAt\"")) {
+                    executeAt = Instant.parse(
+                            line.split(":")[1].trim().replace("\"", "")
+                    );
+                    // Jetzt ist der Task vollständig → hinzufügen
+                    scheduler.addTask(id, name, priority, executeAt);
+                }
             }
-        } catch(IOException e) {
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 
     /**
      * Speichert alle Aufgaben aus dem Scheduler in der Datei {@code tasks.txt}.
@@ -53,14 +79,26 @@ public class Data {
      *
      * @param scheduler Scheduler, dessen Aufgaben gespeichert werden
      */
-    public static void saveFile(Scheduler scheduler) {
+     public static void saveFile(Scheduler scheduler) {
         List<Task> tasks = scheduler.snapshot();
-        try(FileWriter writer = new FileWriter("tasks.txt")) {
+
+        try (FileWriter writer = new FileWriter("tasks.json")) {
+            writer.write("{\n");
+            int index = 0;
             for (Task task : tasks) {
-                writer.write(task.getId() + "\t" + task.getName() + "\t" + task.getPriority() + "\t" + task.getExecuteAT());
+                writer.write("  \"" + task.getId() + "\": {\n");
+                writer.write("    \"name\": \"" + task.getName() + "\",\n");
+                writer.write("    \"priority\": " + task.getPriority() + ",\n");
+                writer.write("    \"executeAt\": \"" + task.getExecuteAT() + "\"\n");
+                writer.write("  }");
+                if (index < tasks.size() - 1) {
+                    writer.write(",");
+                }
                 writer.write("\n");
+                index++;
             }
-        } catch(IOException e) {
+            writer.write("}");
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
