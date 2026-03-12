@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tasks Manager — Dokumentation</title>
+<title>Tasks Manager — Documentation</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -833,20 +833,20 @@
   </div>
 
   <div class="nav-section">
-    <div class="nav-section-label">Einstieg</div>
+    <div class="nav-section-label">Getting Started</div>
     <a class="nav-link active" href="#overview">
-      <span class="nav-icon">◈</span> Übersicht
+      <span class="nav-icon">◈</span> Overview
     </a>
     <a class="nav-link" href="#architecture">
-      <span class="nav-icon">◫</span> Architektur
+      <span class="nav-icon">◫</span> Architecture
     </a>
     <a class="nav-link" href="#start">
-      <span class="nav-icon">▷</span> Starten
+      <span class="nav-icon">▷</span> Running
     </a>
   </div>
 
   <div class="nav-section" style="margin-top:8px">
-    <div class="nav-section-label">Befehle</div>
+    <div class="nav-section-label">Commands</div>
     <a class="nav-link" href="#cmd-add">
       <span class="nav-icon">+</span> add
     </a>
@@ -865,12 +865,12 @@
   </div>
 
   <div class="nav-section" style="margin-top:8px">
-    <div class="nav-section-label">Konzepte</div>
+    <div class="nav-section-label">Concepts</div>
     <a class="nav-link" href="#task-model">
-      <span class="nav-icon">◻</span> Task-Modell
+      <span class="nav-icon">◻</span> Task Model
     </a>
     <a class="nav-link" href="#storage">
-      <span class="nav-icon">◑</span> Datenspeicherung
+      <span class="nav-icon">◑</span> Data Storage
     </a>
     <a class="nav-link" href="#scheduler">
       <span class="nav-icon">◷</span> Scheduler
@@ -886,19 +886,19 @@
     <div class="hero-tag">
       <span>●</span> Java CLI · v1.1
     </div>
-    <h1>Tasks Manager<br><em>Dokumentation</em></h1>
-    <p class="subtitle">Ein Java-basierter Aufgaben-Scheduler mit CLI-Oberfläche. Erstelle, verwalte und plane Tasks — persistent gespeichert in JSON.</p>
+    <h1>Tasks Manager<br><em>Documentation</em></h1>
+    <p class="subtitle">A Java-based task scheduler with a CLI interface. Create, manage, and schedule tasks — persistently stored in JSON.</p>
     <div class="hero-meta">
       <div class="meta-item">
         <span class="dot"></span>
-        <span>von Vladyslav Monke</span>
+        <span>by Vladyslav Monke</span>
       </div>
       <div class="meta-item">·</div>
       <div class="meta-item">Java 21+</div>
       <div class="meta-item">·</div>
       <div class="meta-item">Maven Build</div>
       <div class="meta-item">·</div>
-      <div class="meta-item">tasks.json Persistenz</div>
+      <div class="meta-item">tasks.json Persistence</div>
     </div>
   </div>
 
@@ -909,38 +909,38 @@
     <section class="section" id="overview">
       <div class="section-header">
         <div class="section-num">01</div>
-        <h2>Übersicht</h2>
+        <h2>Overview</h2>
       </div>
 
-      <p>Tasks Manager ist ein Kommandozeilen-Tool, mit dem du Aufgaben erstellen, priorisieren und zeitgesteuert automatisch ausführen lassen kannst. Tasks werden in einer JSON-Datei gespeichert und beim nächsten Start wieder geladen.</p>
+      <p>Tasks Manager is a command-line tool for creating, prioritizing, and automatically executing tasks at scheduled times. Tasks are saved to a JSON file and reloaded on the next startup.</p>
 
       <div class="overview-grid">
         <div class="overview-card">
           <div class="card-icon">⏱</div>
-          <h3>Zeitgesteuerter Scheduler</h3>
-          <p>Tasks werden zum gewünschten Zeitpunkt automatisch ausgeführt — auch während das Programm läuft.</p>
+          <h3>Time-based Scheduler</h3>
+          <p>Tasks are automatically executed at the desired time — even while the program is running.</p>
         </div>
         <div class="overview-card">
           <div class="card-icon">💾</div>
-          <h3>JSON-Persistenz</h3>
-          <p>Alle Tasks werden in <code class="inline">tasks.json</code> gespeichert und beim Neustart wiederhergestellt.</p>
+          <h3>JSON Persistence</h3>
+          <p>All tasks are saved to <code class="inline">tasks.json</code> and restored on the next startup.</p>
         </div>
         <div class="overview-card">
           <div class="card-icon">⚡</div>
           <h3>Immutable Tasks</h3>
-          <p>Das Task-Objekt ist unveränderlich — Änderungen erzeugen stets eine neue Instanz (funktionales Design).</p>
+          <p>The Task object is immutable — changes always produce a new instance (functional design pattern).</p>
         </div>
         <div class="overview-card">
           <div class="card-icon">🔌</div>
-          <h3>Erweiterbar</h3>
-          <p>Das Command-Interface macht es einfach, neue Befehle zu registrieren und dem CLI hinzuzufügen.</p>
+          <h3>Extensible</h3>
+          <p>The Command interface makes it easy to register new commands and add them to the CLI.</p>
         </div>
       </div>
 
       <div class="callout info">
         <div class="callout-icon">ℹ</div>
         <div class="callout-body">
-          <strong>Noch in Entwicklung:</strong> Einige Features wie <code class="inline">--ExecuteAt</code> ändern und die GUI-Oberfläche sind noch nicht vollständig implementiert.
+          <strong>Work in progress:</strong> Some features like <code class="inline">--ExecuteAt</code> editing and the GUI interface are not yet fully implemented.
         </div>
       </div>
     </section>
@@ -949,10 +949,10 @@
     <section class="section" id="architecture">
       <div class="section-header">
         <div class="section-num">02</div>
-        <h2>Architektur</h2>
+        <h2>Architecture</h2>
       </div>
 
-      <p>Das Projekt ist in vier klar getrennte Pakete aufgeteilt, die jeweils eine eigene Verantwortung tragen.</p>
+      <p>The project is split into four clearly separated packages, each with its own responsibility.</p>
 
       <div class="arch-grid">
         <div class="arch-pkg">
@@ -996,29 +996,29 @@
         <div class="flow-step">
           <div class="flow-num">1</div>
           <div class="flow-content">
-            <h4>Start & Laden</h4>
-            <p><code class="inline">Main.java</code> startet — <code class="inline">Data.loadFile()</code> lädt alle Tasks aus <code class="inline">tasks.json</code> in den Scheduler.</p>
+            <h4>Start &amp; Load</h4>
+            <p><code class="inline">Main.java</code> starts — <code class="inline">Data.loadFile()</code> loads all tasks from <code class="inline">tasks.json</code> into the scheduler.</p>
           </div>
         </div>
         <div class="flow-step">
           <div class="flow-num">2</div>
           <div class="flow-content">
-            <h4>Scheduler aktivieren</h4>
-            <p><code class="inline">scheduler.start()</code> plant alle geladenen Tasks sofort im <code class="inline">ScheduledExecutorService</code>.</p>
+            <h4>Activate Scheduler</h4>
+            <p><code class="inline">scheduler.start()</code> immediately schedules all loaded tasks in the <code class="inline">ScheduledExecutorService</code>.</p>
           </div>
         </div>
         <div class="flow-step">
           <div class="flow-num">3</div>
           <div class="flow-content">
-            <h4>CLI-Loop</h4>
-            <p>Der Nutzer gibt Befehle ein. <code class="inline">CommandRegistry</code> mappt das erste Wort auf die passende Implementierung.</p>
+            <h4>CLI Loop</h4>
+            <p>The user enters commands. <code class="inline">CommandRegistry</code> maps the first word to the matching implementation.</p>
           </div>
         </div>
         <div class="flow-step">
           <div class="flow-num">4</div>
           <div class="flow-content">
-            <h4>Speichern & Beenden</h4>
-            <p>Bei <code class="inline">exit</code> wird <code class="inline">Data.saveFile()</code> aufgerufen und der Scheduler ordentlich beendet.</p>
+            <h4>Save &amp; Exit</h4>
+            <p>On <code class="inline">exit</code>, <code class="inline">Data.saveFile()</code> is called and the scheduler shuts down cleanly.</p>
           </div>
         </div>
       </div>
@@ -1028,10 +1028,10 @@
     <section class="section" id="start">
       <div class="section-header">
         <div class="section-num">03</div>
-        <h2>Starten</h2>
+        <h2>Running</h2>
       </div>
 
-      <p>Voraussetzung: Java 21+ und Maven müssen installiert sein. Klone das Repository und baue das Projekt:</p>
+      <p>Prerequisites: Java 21+ and Maven must be installed. Clone the repository and build the project:</p>
 
       <div class="code-block">
         <div class="code-header">
@@ -1039,23 +1039,23 @@
           <div class="code-label">Build &amp; Run</div>
         </div>
         <div class="code-body">
-<code><span class="c-comment"># Projekt bauen</span>
+<code><span class="c-comment"># Build the project</span>
 <span class="c-prompt">$</span> <span class="c-cmd">mvn</span> <span class="c-arg">package</span>
 
-<span class="c-comment"># Starten</span>
+<span class="c-comment"># Run</span>
 <span class="c-prompt">$</span> <span class="c-cmd">java</span> <span class="c-flag">-cp</span> <span class="c-arg">target/classes</span> <span class="c-class">cli.Main</span>
 
-<span class="c-comment"># Alternativ mit IDE (IntelliJ)</span>
-<span class="c-comment"># → Main.java öffnen → Run</span>
+<span class="c-comment"># Alternatively with IDE (IntelliJ)</span>
+<span class="c-comment"># → open Main.java → Run</span>
 
-<span class="c-output">> </span><span class="c-comment">Eingabe-Prompt erscheint</span></code>
+<span class="c-output">> </span><span class="c-comment">input prompt appears</span></code>
         </div>
       </div>
 
       <div class="callout warning">
         <div class="callout-icon">⚠</div>
         <div class="callout-body">
-          <strong>Working Directory:</strong> Die <code class="inline">tasks.json</code> wird im Verzeichnis erstellt, von dem aus du das Programm startest. Starte das Programm immer aus demselben Ordner, damit die Tasks geladen werden.
+          <strong>Working Directory:</strong> The <code class="inline">tasks.json</code> file is created in the directory from which you launch the program. Always start from the same folder so your tasks are loaded correctly.
         </div>
       </div>
     </section>
@@ -1064,7 +1064,7 @@
     <section class="section" id="cmd-add">
       <div class="section-header">
         <div class="section-num">04</div>
-        <h2>Befehle</h2>
+        <h2>Commands</h2>
       </div>
 
       <div class="cmd-list">
@@ -1073,40 +1073,40 @@
         <div class="cmd-card" id="cmd-add">
           <div class="cmd-header">
             <div class="cmd-name">add</div>
-            <div class="cmd-syntax">add --&lt;name&gt; -- &lt;priorität&gt; -- &lt;zeit&gt;</div>
-            <div class="cmd-badge">✓ stabil</div>
+            <div class="cmd-syntax">add --&lt;name&gt; -- &lt;priority&gt; -- &lt;time&gt;</div>
+            <div class="cmd-badge">✓ stable</div>
           </div>
           <div class="cmd-body">
-            <div class="cmd-desc">Fügt eine neue Aufgabe hinzu und plant sie sofort im Scheduler. Nach dem Hinzufügen wird automatisch gespeichert.</div>
+            <div class="cmd-desc">Adds a new task and schedules it immediately. The state is automatically saved after adding.</div>
             <div class="cmd-options">
-              <h4>Zeitformate</h4>
+              <h4>Time Formats</h4>
               <div class="option-row">
-                <div class="option-flag">&lt;zahl&gt;s</div>
-                <div class="option-desc">In X Sekunden ausführen</div>
+                <div class="option-flag">&lt;number&gt;s</div>
+                <div class="option-desc">Execute in X seconds</div>
               </div>
               <div class="option-row">
-                <div class="option-flag">&lt;zahl&gt;min</div>
-                <div class="option-desc">In X Minuten ausführen</div>
+                <div class="option-flag">&lt;number&gt;min</div>
+                <div class="option-desc">Execute in X minutes</div>
               </div>
               <div class="option-row">
-                <div class="option-flag">&lt;zahl&gt;h</div>
-                <div class="option-desc">In X Stunden ausführen</div>
+                <div class="option-flag">&lt;number&gt;h</div>
+                <div class="option-desc">Execute in X hours</div>
               </div>
             </div>
-            <div class="example-label">Beispiele</div>
+            <div class="example-label">Examples</div>
             <div class="code-block">
               <div class="code-header">
                 <div class="code-lang">🖥 CLI</div>
               </div>
               <div class="code-body">
-<code><span class="c-comment"># Task "Meeting vorbereiten" mit Priorität 2 in 30 Minuten</span>
-<span class="c-prompt">></span> <span class="c-cmd">add</span> <span class="c-flag">--</span><span class="c-arg">Meeting vorbereiten</span> <span class="c-flag">--</span> <span class="c-arg">2</span> <span class="c-flag">--</span> <span class="c-arg">30min</span>
+<code><span class="c-comment"># Task "Prepare meeting" with priority 2 in 30 minutes</span>
+<span class="c-prompt">></span> <span class="c-cmd">add</span> <span class="c-flag">--</span><span class="c-arg">Prepare meeting</span> <span class="c-flag">--</span> <span class="c-arg">2</span> <span class="c-flag">--</span> <span class="c-arg">30min</span>
 
-<span class="c-comment"># Task "Backup" mit höchster Priorität in 2 Stunden</span>
+<span class="c-comment"># Task "Backup" with highest priority in 2 hours</span>
 <span class="c-prompt">></span> <span class="c-cmd">add</span> <span class="c-flag">--</span><span class="c-arg">Backup</span> <span class="c-flag">--</span> <span class="c-arg">5</span> <span class="c-flag">--</span> <span class="c-arg">2h</span>
 
-<span class="c-comment"># Task sofort (in 10 Sekunden)</span>
-<span class="c-prompt">></span> <span class="c-cmd">add</span> <span class="c-flag">--</span><span class="c-arg">Testlauf</span> <span class="c-flag">--</span> <span class="c-arg">1</span> <span class="c-flag">--</span> <span class="c-arg">10s</span></code>
+<span class="c-comment"># Task almost immediately (in 10 seconds)</span>
+<span class="c-prompt">></span> <span class="c-cmd">add</span> <span class="c-flag">--</span><span class="c-arg">Test run</span> <span class="c-flag">--</span> <span class="c-arg">1</span> <span class="c-flag">--</span> <span class="c-arg">10s</span></code>
               </div>
             </div>
           </div>
@@ -1117,11 +1117,11 @@
           <div class="cmd-header">
             <div class="cmd-name">list</div>
             <div class="cmd-syntax">list</div>
-            <div class="cmd-badge">✓ stabil</div>
+            <div class="cmd-badge">✓ stable</div>
           </div>
           <div class="cmd-body">
-            <div class="cmd-desc">Gibt alle aktiven Tasks aus — mit UUID, Name, Priorität und geplantem Ausführungszeitpunkt in lokaler Zeitzone.</div>
-            <div class="example-label">Ausgabe-Beispiel</div>
+            <div class="cmd-desc">Prints all active tasks — showing UUID, name, priority, and scheduled execution time in the local timezone.</div>
+            <div class="example-label">Example Output</div>
             <div class="code-block">
               <div class="code-header">
                 <div class="code-lang">🖥 CLI</div>
@@ -1130,7 +1130,7 @@
 <code><span class="c-prompt">></span> <span class="c-cmd">list</span>
 
 <span class="c-output">ID : 3f2e1a4b-c9d8-4e7f-a1b2-0c3d4e5f6a7b</span>
-<span class="c-output">Name : Meeting vorbereiten</span>
+<span class="c-output">Name : Prepare meeting</span>
 <span class="c-output">Priority : 2</span>
 <span class="c-output">Execution: 2025-06-10T14:30:00+02:00[Europe/Vienna]</span>
 
@@ -1147,27 +1147,27 @@
         <div class="cmd-card" id="cmd-remove">
           <div class="cmd-header">
             <div class="cmd-name">remove</div>
-            <div class="cmd-syntax">remove --&lt;methode&gt; &lt;wert&gt;</div>
-            <div class="cmd-badge">✓ stabil</div>
+            <div class="cmd-syntax">remove --&lt;method&gt; &lt;value&gt;</div>
+            <div class="cmd-badge">✓ stable</div>
           </div>
           <div class="cmd-body">
-            <div class="cmd-desc">Entfernt Tasks aus dem Scheduler und bricht deren geplante Ausführung ab. Danach wird automatisch gespeichert.</div>
+            <div class="cmd-desc">Removes tasks from the scheduler and cancels their scheduled execution. Automatically saves afterwards.</div>
             <div class="cmd-options">
-              <h4>Optionen</h4>
+              <h4>Options</h4>
               <div class="option-row">
                 <div class="option-flag">--byName</div>
-                <div class="option-desc">Entfernt alle Tasks mit diesem Namen (Groß-/Kleinschreibung beachten)</div>
+                <div class="option-desc">Removes all tasks with this name (case-sensitive)</div>
               </div>
               <div class="option-row">
                 <div class="option-flag">--byPriority</div>
-                <div class="option-desc">Entfernt alle Tasks mit der angegebenen Priorität (1–5)</div>
+                <div class="option-desc">Removes all tasks with the given priority (1–5)</div>
               </div>
               <div class="option-row">
                 <div class="option-flag">--byUUID</div>
-                <div class="option-desc">Entfernt genau den Task mit dieser UUID (präziseste Methode)</div>
+                <div class="option-desc">Removes exactly the task with this UUID (most precise)</div>
               </div>
             </div>
-            <div class="example-label">Beispiele</div>
+            <div class="example-label">Examples</div>
             <div class="code-block">
               <div class="code-header">
                 <div class="code-lang">🖥 CLI</div>
@@ -1187,36 +1187,36 @@
         <div class="cmd-card" id="cmd-change">
           <div class="cmd-header">
             <div class="cmd-name">change</div>
-            <div class="cmd-syntax">change --&lt;feld&gt; &lt;uuid&gt; &lt;wert&gt;</div>
-            <div class="cmd-badge">✓ stabil</div>
+            <div class="cmd-syntax">change --&lt;field&gt; &lt;uuid&gt; &lt;value&gt;</div>
+            <div class="cmd-badge">✓ stable</div>
           </div>
           <div class="cmd-body">
-            <div class="cmd-desc">Ändert Name oder Priorität eines Tasks anhand seiner UUID. Der alte Task wird ersetzt — der Scheduler plant den geänderten Task neu.</div>
+            <div class="cmd-desc">Changes the name or priority of a task by its UUID. The old task is replaced — the scheduler reschedules the updated task automatically.</div>
             <div class="cmd-options">
-              <h4>Optionen</h4>
+              <h4>Options</h4>
               <div class="option-row">
                 <div class="option-flag">--Name</div>
-                <div class="option-desc">Setzt einen neuen Namen für den Task</div>
+                <div class="option-desc">Sets a new name for the task</div>
               </div>
               <div class="option-row">
                 <div class="option-flag">--Priority</div>
-                <div class="option-desc">Setzt eine neue Priorität (1–5)</div>
+                <div class="option-desc">Sets a new priority (1–5)</div>
               </div>
               <div class="option-row">
                 <div class="option-flag">--ExecuteAt</div>
-                <div class="option-desc" style="color:var(--text3)"><em>Noch nicht implementiert (TODO)</em></div>
+                <div class="option-desc" style="color:var(--text3)"><em>Not yet implemented (TODO)</em></div>
               </div>
             </div>
-            <div class="example-label">Beispiele</div>
+            <div class="example-label">Examples</div>
             <div class="code-block">
               <div class="code-header">
                 <div class="code-lang">🖥 CLI</div>
               </div>
               <div class="code-body">
-<code><span class="c-comment"># Name ändern</span>
-<span class="c-prompt">></span> <span class="c-cmd">change</span> <span class="c-flag">--Name</span> <span class="c-arg">3f2e1a4b-c9d8-4e7f-a1b2-0c3d4e5f6a7b</span> <span class="c-arg">Notfall-Backup</span>
+<code><span class="c-comment"># Change name</span>
+<span class="c-prompt">></span> <span class="c-cmd">change</span> <span class="c-flag">--Name</span> <span class="c-arg">3f2e1a4b-c9d8-4e7f-a1b2-0c3d4e5f6a7b</span> <span class="c-arg">Emergency Backup</span>
 
-<span class="c-comment"># Priorität auf 5 setzen</span>
+<span class="c-comment"># Set priority to 5</span>
 <span class="c-prompt">></span> <span class="c-cmd">change</span> <span class="c-flag">--Priority</span> <span class="c-arg">3f2e1a4b-c9d8-4e7f-a1b2-0c3d4e5f6a7b</span> <span class="c-arg">5</span></code>
               </div>
             </div>
@@ -1227,27 +1227,27 @@
         <div class="cmd-card" id="cmd-sort">
           <div class="cmd-header">
             <div class="cmd-name">sort</div>
-            <div class="cmd-syntax">sort --&lt;methode&gt;</div>
-            <div class="cmd-badge">✓ stabil</div>
+            <div class="cmd-syntax">sort --&lt;method&gt;</div>
+            <div class="cmd-badge">✓ stable</div>
           </div>
           <div class="cmd-body">
-            <div class="cmd-desc">Sortiert die interne Task-Liste und speichert die neue Reihenfolge in der JSON-Datei. Beeinflusst die Ausgabe von <code class="inline">list</code>.</div>
+            <div class="cmd-desc">Sorts the internal task list and saves the new order to the JSON file. Affects the output of <code class="inline">list</code>.</div>
             <div class="cmd-options">
-              <h4>Optionen</h4>
+              <h4>Options</h4>
               <div class="option-row">
                 <div class="option-flag">--byName</div>
-                <div class="option-desc">Alphabetisch nach Name (A → Z)</div>
+                <div class="option-desc">Alphabetically by name (A → Z)</div>
               </div>
               <div class="option-row">
                 <div class="option-flag">--byPriority</div>
-                <div class="option-desc">Aufsteigend nach Priorität (1 → 5)</div>
+                <div class="option-desc">Ascending by priority (1 → 5)</div>
               </div>
               <div class="option-row">
                 <div class="option-flag">--byTime</div>
-                <div class="option-desc">Chronologisch nach Ausführungszeit (früheste zuerst)</div>
+                <div class="option-desc">Chronologically by execution time (earliest first)</div>
               </div>
             </div>
-            <div class="example-label">Beispiele</div>
+            <div class="example-label">Examples</div>
             <div class="code-block">
               <div class="code-header">
                 <div class="code-lang">🖥 CLI</div>
@@ -1266,11 +1266,11 @@
       <div class="code-block" style="margin-top:24px">
         <div class="code-header">
           <div class="code-lang">🖥 CLI</div>
-          <div class="code-label">Programm beenden</div>
+          <div class="code-label">Quit program</div>
         </div>
         <div class="code-body">
 <code><span class="c-prompt">></span> <span class="c-cmd">exit</span>
-<span class="c-comment"># Speichert tasks.json und beendet den Scheduler sauber</span></code>
+<span class="c-comment"># Saves tasks.json and shuts down the scheduler cleanly</span></code>
         </div>
       </div>
     </section>
@@ -1279,43 +1279,43 @@
     <section class="section" id="task-model">
       <div class="section-header">
         <div class="section-num">05</div>
-        <h2>Task-Modell</h2>
+        <h2>Task Model</h2>
       </div>
 
-      <p>Ein <code class="inline">Task</code> ist ein immutables Java-Objekt. Es hat vier Felder, und jede Änderung erzeugt eine neue Instanz über Wither-Methoden.</p>
+      <p>A <code class="inline">Task</code> is an immutable Java object. It has four fields, and any change produces a new instance via wither methods.</p>
 
       <div class="task-model">
         <div class="task-model-header">
-          <span>core.Task</span> — Felder
+          <span>core.Task</span> — Fields
         </div>
         <div class="field-row">
           <div class="field-name">id</div>
           <div class="field-type">UUID</div>
-          <div class="field-desc">Eindeutige Kennung, automatisch generiert</div>
+          <div class="field-desc">Unique identifier, auto-generated</div>
         </div>
         <div class="field-row">
           <div class="field-name">name</div>
           <div class="field-type">String</div>
-          <div class="field-desc">Bezeichnung der Aufgabe (nicht null)</div>
+          <div class="field-desc">Name of the task (not null)</div>
         </div>
         <div class="field-row">
           <div class="field-name">priority</div>
           <div class="field-type">int</div>
-          <div class="field-desc">Priorität von 1 (niedrig) bis 5 (kritisch)</div>
+          <div class="field-desc">Priority from 1 (low) to 5 (critical)</div>
         </div>
         <div class="field-row">
           <div class="field-name">executeAt</div>
           <div class="field-type">Instant</div>
-          <div class="field-desc">Geplanter Ausführungszeitpunkt (UTC)</div>
+          <div class="field-desc">Scheduled execution time (UTC)</div>
         </div>
       </div>
 
-      <h3 style="font-size:15px;font-weight:600;margin:24px 0 12px;color:var(--text2)">Prioritätsstufen</h3>
+      <h3 style="font-size:15px;font-weight:600;margin:24px 0 12px;color:var(--text2)">Priority Levels</h3>
 
       <div class="priority-grid">
         <div class="prio-item prio-1">
           <div class="prio-num">1</div>
-          <div class="prio-label">Niedrig</div>
+          <div class="prio-label">Low</div>
         </div>
         <div class="prio-item prio-2">
           <div class="prio-num">2</div>
@@ -1323,15 +1323,15 @@
         </div>
         <div class="prio-item prio-3">
           <div class="prio-num">3</div>
-          <div class="prio-label">Mittel</div>
+          <div class="prio-label">Medium</div>
         </div>
         <div class="prio-item prio-4">
           <div class="prio-num">4</div>
-          <div class="prio-label">Hoch</div>
+          <div class="prio-label">High</div>
         </div>
         <div class="prio-item prio-5">
           <div class="prio-num">5</div>
-          <div class="prio-label">Kritisch</div>
+          <div class="prio-label">Critical</div>
         </div>
       </div>
 
@@ -1341,13 +1341,13 @@
           <div class="code-label">Immutable Pattern</div>
         </div>
         <div class="code-body">
-<code><span class="c-comment">// Task erstellen</span>
+<code><span class="c-comment">// Create a task</span>
 <span class="c-class">Task</span> t = <span class="c-keyword">new</span> <span class="c-class">Task</span>(<span class="c-string">"Backup"</span>, <span class="c-num">5</span>, Instant.now().plusSeconds(<span class="c-num">3600</span>));
 
-<span class="c-comment">// Name ändern → neue Instanz, original unverändert</span>
-<span class="c-class">Task</span> t2 = t.withName(<span class="c-string">"Notfall-Backup"</span>);
+<span class="c-comment">// Change name → new instance, original unchanged</span>
+<span class="c-class">Task</span> t2 = t.withName(<span class="c-string">"Emergency Backup"</span>);
 
-<span class="c-comment">// Priorität ändern → wieder neue Instanz</span>
+<span class="c-comment">// Change priority → yet another new instance</span>
 <span class="c-class">Task</span> t3 = t2.withPriority(<span class="c-num">3</span>);</code>
         </div>
       </div>
@@ -1357,21 +1357,21 @@
     <section class="section" id="storage">
       <div class="section-header">
         <div class="section-num">06</div>
-        <h2>Datenspeicherung</h2>
+        <h2>Data Storage</h2>
       </div>
 
-      <p>Alle Tasks werden in einer Datei namens <code class="inline">tasks.json</code> im Arbeitsverzeichnis gespeichert. Das Format ist manuell lesbares JSON.</p>
+      <p>All tasks are stored in a file called <code class="inline">tasks.json</code> in the working directory. The format is human-readable JSON.</p>
 
       <div class="storage-block">
         <div class="storage-header">
-          <span>Dateiformat</span>
+          <span>File Format</span>
           <span class="file-badge">tasks.json</span>
         </div>
         <div class="code-body">
 <code style="font-family:'DM Mono',monospace;font-size:13px;line-height:1.8;display:block;padding:20px">
 <span style="color:var(--border2)">{</span>
   <span style="color:#7aadcf">"3f2e1a4b-c9d8-4e7f-a1b2-0c3d4e5f6a7b"</span>: <span style="color:var(--border2)">{</span>
-    <span style="color:#7aadcf">"name"</span>: <span style="color:var(--green)">"Meeting vorbereiten"</span>,
+    <span style="color:#7aadcf">"name"</span>: <span style="color:var(--green)">"Prepare meeting"</span>,
     <span style="color:#7aadcf">"priority"</span>: <span style="color:var(--accent2)">2</span>,
     <span style="color:#7aadcf">"executeAt"</span>: <span style="color:var(--green)">"2025-06-10T12:30:00Z"</span>
   <span style="color:var(--border2)">}</span>,
@@ -1387,7 +1387,7 @@
       <div class="callout success">
         <div class="callout-icon">✓</div>
         <div class="callout-body">
-          Die Datei wird nach jedem <code class="inline">add</code>, <code class="inline">remove</code>, <code class="inline">sort</code> und beim <code class="inline">exit</code> automatisch aktualisiert. Kein manuelles Speichern nötig.
+          The file is automatically updated after every <code class="inline">add</code>, <code class="inline">remove</code>, <code class="inline">sort</code>, and on <code class="inline">exit</code>. No manual saving required.
         </div>
       </div>
     </section>
@@ -1399,22 +1399,22 @@
         <h2>Scheduler</h2>
       </div>
 
-      <p>Der Scheduler nutzt Javas <code class="inline">ScheduledExecutorService</code> mit einem Single-Thread-Pool. Er plant jeden Task individuell und löscht ihn nach der Ausführung automatisch.</p>
+      <p>The scheduler uses Java's <code class="inline">ScheduledExecutorService</code> with a single-thread pool. It schedules each task individually and automatically removes it after execution.</p>
 
       <div class="code-block">
         <div class="code-header">
           <div class="code-lang">☕ Java</div>
-          <div class="code-label">Interne Ausführung</div>
+          <div class="code-label">Internal Execution</div>
         </div>
         <div class="code-body">
-<code><span class="c-comment">// Was passiert, wenn ein Task ausgeführt wird:</span>
+<code><span class="c-comment">// What happens when a task fires:</span>
 executor.schedule(() -> {
     <span class="c-keyword">try</span> {
         System.out.println(<span class="c-string">"\nEXEC "</span> + task.getName());
-        <span class="c-comment">// → hier könnte eine Runnable-Action laufen (TODO)</span>
+        <span class="c-comment">// → a Runnable action could run here (TODO)</span>
     } <span class="c-keyword">finally</span> {
         scheduled.remove(task.getId());
-        remove(task.getId()); <span class="c-comment">// aus der Liste entfernen</span>
+        remove(task.getId()); <span class="c-comment">// remove from list</span>
     }
 }, delay, TimeUnit.MILLISECONDS);</code>
         </div>
@@ -1423,12 +1423,12 @@ executor.schedule(() -> {
       <div class="callout info">
         <div class="callout-icon">ℹ</div>
         <div class="callout-body">
-          <strong>RunnableActions:</strong> Im Ordner <code class="inline">core/RunnableActions/</code> sind bereits Ideen angelegt — z.B. <code class="inline">RandomFact</code>, <code class="inline">SpaceFact</code> und <code class="inline">codingChallange</code>. Diese sollen zukünftig als echte Aktionen an Tasks gebunden werden können.
+          <strong>RunnableActions:</strong> The folder <code class="inline">core/RunnableActions/</code> already contains ideas — e.g. <code class="inline">RandomFact</code>, <code class="inline">SpaceFact</code>, and <code class="inline">codingChallange</code>. These are planned to be bindable as real actions on tasks in the future.
         </div>
       </div>
 
-      <h3 style="font-size:15px;font-weight:600;margin:24px 0 12px;color:var(--text2)">Thread-Sicherheit</h3>
-      <p>Alle Zugriffe auf die Task-Liste und die Scheduled-Map sind mit <code class="inline">synchronized</code> geschützt. Das <code class="inline">snapshot()</code>-Muster verhindert ConcurrentModificationException beim Iterieren.</p>
+      <h3 style="font-size:15px;font-weight:600;margin:24px 0 12px;color:var(--text2)">Thread Safety</h3>
+      <p>All access to the task list and scheduled map is protected with <code class="inline">synchronized</code>. The <code class="inline">snapshot()</code> pattern prevents ConcurrentModificationException during iteration.</p>
     </section>
 
   </div><!-- /content -->
@@ -1436,8 +1436,8 @@ executor.schedule(() -> {
   <!-- FOOTER -->
   <div class="footer">
     <div class="footer-left">
-      <strong>Tasks Manager</strong> · Dokumentation · v1.1<br>
-      <span style="font-size:12px">Autor: Vladyslav Monke</span>
+      <strong>Tasks Manager</strong> · Documentation · v1.1<br>
+      <span style="font-size:12px">Author: Vladyslav Monke</span>
     </div>
     <div class="footer-badge">
       <span>☕</span> Java · Maven · JSON
