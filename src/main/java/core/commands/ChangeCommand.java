@@ -1,4 +1,4 @@
-package cli.commands;
+package core.commands;
 
 import cli.Command;
 import core.Scheduler;
@@ -15,7 +15,7 @@ import java.util.UUID;
  * @author Monke Vladyslav
  * @version 1.1
  */
-public class changeCommand implements Command {
+public class ChangeCommand implements Command {
 
     /**
      * Führt den Change-Befehl aus.
@@ -40,9 +40,9 @@ public class changeCommand implements Command {
             return;
         }
         switch (args[1]) {
-            case "--Name" -> scheduler.changeName(UUID.fromString(args[2]), args[3]);
-            case "--Priority" -> scheduler.changePriority(UUID.fromString(args[2]), Integer.parseInt(args[3]));
-            //case "--ExecuteAt" -> scheduler.changeExecuteAt(UUID.fromString(args[2]), args[3]); to do
+            case "--name" -> scheduler.changeName(UUID.fromString(args[2]), args[3]);
+            case "--priority" -> scheduler.changePriority(UUID.fromString(args[2]), Integer.parseInt(args[3]));
+            //case "--executeAt" -> scheduler.changeExecuteAt(UUID.fromString(args[2]), args[3]); to do
         }
     }
 }

@@ -1,6 +1,6 @@
 package cli;
 
-import cli.commands.*;
+import core.commands.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,8 +23,9 @@ public class CommandRegistry {
         commands.put("list", new ListCommand());
         commands.put("sort", new SortCommand());
         commands.put("remove", new RemoveCommand());
-        commands.put("add", new addCommand());
-        commands.put("change", new changeCommand());
+        commands.put("add", new AddCommand());
+        commands.put("change", new ChangeCommand());
+        commands.put("help", new HelpCommand());
     }
 
     /**

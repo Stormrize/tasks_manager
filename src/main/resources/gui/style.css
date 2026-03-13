@@ -1,10 +1,25 @@
+#text {
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+}
+
 .button {
     -fx-background-color: #4CAF50; /* зеленый фон */
     -fx-text-fill: white;           /* белый текст */
     -fx-font-size: 14pt;            /* размер шрифта */
     -fx-padding: 10px 20px;         /* внутренние отступы */
+    -fx-margin: 20px;
     -fx-background-radius: 5px;     /* скругление углов */
 }
 .button:hover {
     -fx-background-color: #45a049; /* при наведении цвет темнее */
+}
+
+#textField {
+    -fx-background-color: #4CAF50; /* зеленый фон */
+    -fx-text-fill: white;           /* белый текст */
+    -fx-font-size: 14pt;            /* размер шрифта */
+    -fx-padding: 10px 20px;         /* внутренние отступы */
+    -fx-margin: 20px;
+    -fx-background-radius: 5px;
 }

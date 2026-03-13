@@ -57,7 +57,7 @@ public class Data {
                 // executeAt-Zeile
                 else if (line.startsWith("\"executeAt\"")) {
                     executeAt = Instant.parse(
-                            line.split(":")[1].trim().replace("\"", "")
+                            line.split(":", 2)[1].trim().replace("\"", "")
                     );
                     // Jetzt ist der Task vollständig → hinzufügen
                     scheduler.addTask(id, name, priority, executeAt);

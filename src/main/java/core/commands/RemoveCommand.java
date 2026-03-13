@@ -1,4 +1,4 @@
-package cli.commands;
+package core.commands;
 
 import cli.Command;
 import core.Scheduler;

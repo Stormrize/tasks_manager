@@ -1,4 +1,4 @@
-package cli.commands;
+package core.commands;
 
 import cli.Command;
 import core.Scheduler;
@@ -19,7 +19,7 @@ import java.util.List;
  * @version 1.1
  */
 
-public class addCommand implements Command {
+public class AddCommand implements Command {
 
     /**
      * Führt den Hinzufügen-Befehl aus.
