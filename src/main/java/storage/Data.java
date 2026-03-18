@@ -2,6 +2,7 @@ package storage;
 
 import core.Scheduler;
 import core.Task;
+import core.runnable.SpaceFact;
 
 import java.io.*;
 import java.time.Instant;
@@ -59,8 +60,9 @@ public class Data {
                     executeAt = Instant.parse(
                             line.split(":", 2)[1].trim().replace("\"", "")
                     );
-                    // Jetzt ist der Task vollständig → hinzufügen
-                    scheduler.addTask(id, name, priority, executeAt);
+                } else if (line.startsWith("\"action\"")) {
+                    Runnable action = new SpaceFact();
+                    scheduler.addTask(id, name, priority, executeAt, action);
                 }
             }
 

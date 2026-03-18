@@ -1,17 +1,12 @@
-package gui;
+package gui.stages;
 
-import cli.CommandRegistry;
-import core.Scheduler;
-import gui.Commands.AddCommand;
+import gui.stages.commands.AddCommand;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import storage.Data;
-
-import java.util.concurrent.ConcurrentMap;
 
 public class TasksScene {
     public static Scene tasks(Stage stage) {

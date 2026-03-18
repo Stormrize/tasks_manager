@@ -1,5 +1,7 @@
 package core;
 
+import core.runnable.SpaceFact;
+
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -49,7 +51,8 @@ public class Scheduler {
                     "ID : " + task.getId() +
                             "\nName : " + task.getName() +
                             "\nPriority : " + task.getPriority() +
-                            "\nExecution: " + local
+                            "\nExecution: " + local +
+                            "\nAction " + task.getAction().toString()
             );
         }
     }
@@ -73,8 +76,8 @@ public class Scheduler {
      * @param priority Priorität der Aufgabe
      * @param executeAT Zeitpunkt der Ausführung
      */
-    public void addTask(String name, int priority, Instant executeAT) {
-        Task task = new Task(name, priority, executeAT);
+    public void addTask(String name, int priority, Instant executeAT, Runnable action) {
+        Task task = new Task(name, priority, executeAT, action);
         addTask(task);
     }
 
@@ -86,8 +89,8 @@ public class Scheduler {
      * @param priority Priorität der Aufgabe
      * @param executeAT Zeitpunkt der Ausführung
      */
-    public void addTask(UUID id, String name, int priority, Instant executeAT) {
-        Task task = new Task(id, name, priority, executeAT);
+    public void addTask(UUID id, String name, int priority, Instant executeAT, Runnable action) {
+        Task task = new Task(id, name, priority, executeAT, action);
         addTask(task);
     }
 
@@ -178,7 +181,7 @@ public class Scheduler {
 
         ScheduledFuture<?> f = executor.schedule(() -> {
             try {
-                System.out.println("\nEXEC " + task.getName());
+                task.getAction().run();
             } finally {
                 synchronized (this) {
                     scheduled.remove(task.getId());

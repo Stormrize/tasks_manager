@@ -1,6 +1,7 @@
 package core.commands;
 
 import cli.Command;
+import core.runnable.RunnableRegistry;
 import core.Scheduler;
 import storage.Data;
 
@@ -63,8 +64,10 @@ public class AddCommand implements Command {
         } else if (time.equals("h")) {
             seconds = seconds * 3600;
         }
+        String value2 = parts.get(3).toString();
         Instant executeAt = Instant.now().plusSeconds(seconds);
-        scheduler.addTask(parts.get(0).toString(), Integer.parseInt(parts.get(1).toString()), executeAt);
+        Runnable action = RunnableRegistry.get(value2);
+        scheduler.addTask(parts.get(0).toString(), Integer.parseInt(parts.get(1).toString()), executeAt, action);
         Data.saveFile(scheduler);
     }
 }

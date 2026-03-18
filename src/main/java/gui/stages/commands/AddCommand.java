@@ -1,4 +1,4 @@
-package gui.Commands;
+package gui.stages.commands;
 
 import cli.CommandRegistry;
 import javafx.geometry.Pos;

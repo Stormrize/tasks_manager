@@ -9,8 +9,8 @@ public class test {
     static int counter = 0;
 
     public static void main(String[] args) throws InterruptedException, URISyntaxException, IOException {
-        JsonNode fact = SpaceFact.getSpaceFact();
-        System.out.println(fact.asText("title"));
-        System.out.println(fact.asText("url"));
+//        JsonNode fact = SpaceFact.getSpaceFact();
+//        System.out.println(fact.asText("title"));
+//        System.out.println(fact.asText("url"));
     }
 }
