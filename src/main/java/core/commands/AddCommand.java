@@ -12,12 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Die Klasse {@code addCommand} implementiert das Interface {@link Command} und
- * ermöglicht das Hinzufügen von Aufgaben aus dem {@link Scheduler}
- * <p>
- * Nach dem Hinzufügen wird der aktuelle Stand des Schedulers in der Datenbank/Datei gespeichert.
- * </p>
- *
  * @author Monke Vladyslav
  * @version 1.1
  */
@@ -25,11 +19,6 @@ import java.util.List;
 public class AddCommand implements Command {
 
     /**
-     * Führt den Hinzufügen-Befehl aus.
-     * <p>
-     * * Nach erfolgreichem Entfernen werden die Änderungen mittels {@link Data#saveTasks(Scheduler)} gespeichert.
-     * </p>
-     *
      * @param args Array von Argumenten des Befehls
      * @param scheduler die Scheduler-Instanz, aus der Aufgaben entfernt werden sollen
      */

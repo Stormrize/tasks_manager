@@ -19,11 +19,11 @@ public class HelpCommand implements Command {
     Adds a new task to the scheduler.
     
     Usage:
-    add --name <task name> --priority <number> --in <time>
+    add --name <task name> --priority <number> --in <time> --action <action name> --repeat <time>
     
     Example:
-    add --name Do homework --priority 2 --in 30min
-    add --name Clean room --priority 1 --in 2h
+    add --name Do homework --priority 2 --in 30min --action wallpaper --repeat 1d
+    add --name Clean room --priority 1 --in 2h --action space fact --repeat 1d
     
     
     EDIT TASK
