@@ -1,12 +1,10 @@
-package core.runnable;
+package core.runnable.RandomFact;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import gui.popups.RandomFactGui;
 import javafx.application.Platform;
 import storage.DOT.RandomFactData;
-
-import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -17,7 +15,7 @@ public class RandomFact implements Runnable {
         try {
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create("https://uselessfacts.jsph.pl/api/v2/facts/random"))
+                    .uri(URI.create("https:uselessfacts.jsph.pl/api/v2/facts/random"))
                     .GET()
                     .build();
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());

@@ -29,7 +29,7 @@ public class SortCommand implements Command {
      *     <li>{@code --byPriority} : Sortiert Aufgaben nach der Priorität</li>
      *     <li>{@code --byTime} : Sortiert die Aufgaben nach der Zeit</li>
      * </ul>
-     * Nach erfolgreichem Sortieren werden die Änderungen mittels {@link Data#saveFile(Scheduler)} gespeichert.
+     * Nach erfolgreichem Sortieren werden die Änderungen mittels {@link Data#saveTasks(Scheduler)} gespeichert.
      * </p>
      *
      * @param args Array von Argumenten des Befehls
@@ -45,6 +45,6 @@ public class SortCommand implements Command {
             case "--byPriority" -> scheduler.sortByPriority();
             case "--byTime" -> scheduler.sortByTime();
         }
-        Data.saveFile(scheduler);
+        Data.saveTasks(scheduler);
     }
 }

@@ -3,8 +3,10 @@ package core.commands;
 import cli.Command;
 import core.runnable.RunnableRegistry;
 import core.Scheduler;
+import core.runnable.WallpapersChanger.WallpaperHelper;
 import storage.Data;
 
+import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +27,7 @@ public class AddCommand implements Command {
     /**
      * Führt den Hinzufügen-Befehl aus.
      * <p>
-     * * Nach erfolgreichem Entfernen werden die Änderungen mittels {@link Data#saveFile(Scheduler)} gespeichert.
+     * * Nach erfolgreichem Entfernen werden die Änderungen mittels {@link Data#saveTasks(Scheduler)} gespeichert.
      * </p>
      *
      * @param args Array von Argumenten des Befehls
@@ -33,12 +35,6 @@ public class AddCommand implements Command {
      */
 
     public void execute (String[] args, Scheduler scheduler) {
-
-        if (args.length < 2) {
-            System.out.println("Look up manual \"help\"");
-            return;
-        }
-
         List<StringBuilder> parts = new ArrayList<>();
         int counter = 0;
         for (int i = 1; i < args.length; i++) {
@@ -52,22 +48,33 @@ public class AddCommand implements Command {
             counter++;
         }
 
-        if (parts.size() < 3) {
+        if (parts.size() < 4) {
             System.out.println("Look up manual \"help\"");
             return;
         }
-        String value = parts.get(2).toString();
-        int seconds = Integer.parseInt(value.replaceAll("\\D", ""));
-        String time = value.replaceAll("\\d", "");
-        if (time.equals("min")) {
-            seconds *= 60;
-        } else if (time.equals("h")) {
-            seconds = seconds * 3600;
+        String name = parts.get(0).toString();
+        byte priority = Byte.parseByte(parts.get(1).toString());
+        Instant executeAt = Instant.now().plus(parseDuration(parts.get(2).toString()));
+        Runnable action = RunnableRegistry.get(parts.get(3).toString());
+        Duration repeatInterval = null;
+        if (parts.size() >= 5) repeatInterval = parseDuration(parts.get(4).toString());
+        if (name.equals("wallpaper")) {
+            scheduler.addTask(name, priority, executeAt.minusSeconds(240), new WallpaperHelper(), Duration.ofDays(15));
         }
-        String value2 = parts.get(3).toString();
-        Instant executeAt = Instant.now().plusSeconds(seconds);
-        Runnable action = RunnableRegistry.get(value2);
-        scheduler.addTask(parts.get(0).toString(), Integer.parseInt(parts.get(1).toString()), executeAt, action);
-        Data.saveFile(scheduler);
+        scheduler.addTask(name, priority, executeAt, action, repeatInterval);
+        Data.saveTasks(scheduler);
+    }
+
+    private Duration parseDuration(String input) {
+        int value = Integer.parseInt(input.replaceAll("\\D", ""));
+        String unit = input.replaceAll("\\d", "");
+
+        return switch (unit) {
+            case "s", "sec" -> Duration.ofSeconds(value);
+            case "min" -> Duration.ofMinutes(value);
+            case "h" -> Duration.ofHours(value);
+            case "d" -> Duration.ofDays(value);
+            default -> Duration.ZERO;
+        };
     }
 }

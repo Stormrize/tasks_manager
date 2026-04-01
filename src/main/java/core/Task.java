@@ -1,5 +1,6 @@
 package core;
 
+import java.time.Duration;
 import java.time.Instant;
 import java.util.UUID;
 
@@ -16,19 +17,17 @@ import java.util.UUID;
  */
 public class Task {
 
-    /** Eindeutige ID der Aufgabe */
     private final UUID id;
 
-    /** Name der Aufgabe */
     private final String name;
 
-    /** Priorität der Aufgabe (1 bis 5) */
-    private final int priority;
+    private final byte priority;
 
-    /** Zeitpunkt der Ausführung */
     private final Instant executeAt;
 
     private final Runnable action;
+
+    private final Duration repeatInterval;
 
     /**
      * Erstellt eine neue Aufgabe mit automatisch generierter ID.
@@ -38,13 +37,14 @@ public class Task {
      * @param executeAT Zeitpunkt der Ausführung (nicht null)
      * @throws IllegalArgumentException falls Name null ist, Priorität außerhalb von 1-5 liegt oder executeAT null ist
      */
-    public Task(String name, int priority, Instant executeAT, Runnable action) {
+    public Task(String name, byte priority, Instant executeAT, Runnable action, Duration repeatInterval) {
         if ((name != null) && (priority >=1 && priority <= 5) && executeAT != null) {
             this.id = UUID.randomUUID();
             this.name = name;
             this.priority = priority;
             this.executeAt = executeAT;
             this.action = action;
+            this.repeatInterval = repeatInterval;
         } else throw new IllegalArgumentException("Ungültige Argumente für Task");
     }
 
@@ -57,13 +57,14 @@ public class Task {
      * @param executeAT Zeitpunkt der Ausführung (nicht null)
      * @throws IllegalArgumentException falls eines der Argumente ungültig ist
      */
-    public Task(UUID id, String name, int priority, Instant executeAT, Runnable action) {
+    public Task(UUID id, String name, byte priority, Instant executeAT, Runnable action, Duration repeatInterval) {
         if ((name != null) && (priority >=1 && priority <= 5) && (executeAT != null) && id != null) {
             this.id = id;
             this.name = name;
             this.priority = priority;
             this.executeAt = executeAT;
             this.action = action;
+            this.repeatInterval = repeatInterval;
         } else throw new IllegalArgumentException("Ungültige Argumente für Task");
     }
 
@@ -76,7 +77,7 @@ public class Task {
      */
     public Task withName(String name) {
         if (name != null)
-            return new Task(id, name, priority, executeAt, action);
+            return new Task(id, name, priority, executeAt, action, repeatInterval);
         else throw new IllegalArgumentException("Ungültiger Name");
     }
 
@@ -87,9 +88,9 @@ public class Task {
      * @return neue {@code Task}-Instanz mit geänderter Priorität
      * @throws IllegalArgumentException falls die Priorität nicht zwischen 1 und 5 liegt
      */
-    public Task withPriority(int priority) {
+    public Task withPriority(byte priority) {
         if (priority >= 1 && priority <=5)
-            return new Task(id, name, priority, executeAt, action);
+            return new Task(id, name, priority, executeAt, action, repeatInterval);
         else throw new IllegalArgumentException("Ungültige Priorität");
     }
 
@@ -102,7 +103,7 @@ public class Task {
      */
     public Task withExecuteAt(Instant executeAt) {
         if (executeAt != null)
-            return new Task(id, name, priority, executeAt, action);
+            return new Task(id, name, priority, executeAt, action, repeatInterval);
         else throw new IllegalArgumentException("Ungültiger Ausführungszeitpunkt");
     }
 
@@ -120,7 +121,7 @@ public class Task {
      *
      * @return Priorität der Aufgabe
      */
-    public int getPriority() {
+    public byte getPriority() {
         return priority;
     }
 
@@ -134,7 +135,7 @@ public class Task {
     }
 
     public Runnable getAction() {
-        return this.action;
+        return action;
     }
 
     /**
@@ -144,5 +145,9 @@ public class Task {
      */
     public UUID getId() {
         return id;
+    }
+
+    public Duration getRepeatInterval() {
+        return repeatInterval;
     }
 }

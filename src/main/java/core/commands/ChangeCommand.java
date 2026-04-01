@@ -41,7 +41,7 @@ public class ChangeCommand implements Command {
         }
         switch (args[1]) {
             case "--name" -> scheduler.changeName(UUID.fromString(args[2]), args[3]);
-            case "--priority" -> scheduler.changePriority(UUID.fromString(args[2]), Integer.parseInt(args[3]));
+            case "--priority" -> scheduler.changePriority(UUID.fromString(args[2]), Byte.parseByte(args[3]));
             //case "--executeAt" -> scheduler.changeExecuteAt(UUID.fromString(args[2]), args[3]); to do
         }
     }

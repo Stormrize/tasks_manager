@@ -1,7 +1,23 @@
 {
-  "21e16ed8-a515-482b-8061-2a3f1216f342": {
-    "name": "fact",
-    "priority": 3,
-    "executeAt": "2026-03-17T20:14:14.333921186Z"
+  "468293e2-a51c-4eed-96ca-cd6fa679690f": {
+    "name": "wallpaper",
+    "priority": 1,
+    "executeAt": "2026-03-31T23:26:47.627816245Z",
+    "action": "core.runnable.WallpapersChanger.WallpaperChanger@7291c18f", 
+    "repeatInterval": "PT24H"
+  },
+  "deacd4cd-df82-44fc-a7af-44717602cd25": {
+    "name": "wallpaper",
+    "priority": 1,
+    "executeAt": "2026-04-15T23:22:47.627816245Z",
+    "action": "core.runnable.WallpapersChanger.WallpaperHelper@1d81eb93", 
+    "repeatInterval": "PT360H"
+  },
+  "d128e74d-4085-4377-b315-cb1cecf2cdba": {
+    "name": "wallpaper",
+    "priority": 1,
+    "executeAt": "2026-04-01T23:26:47.627816245Z",
+    "action": "core.runnable.WallpapersChanger.WallpaperChanger@7291c18f", 
+    "repeatInterval": "PT24H"
   }
 }

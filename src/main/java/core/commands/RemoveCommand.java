@@ -28,7 +28,7 @@ public class RemoveCommand implements Command {
      *     <li>{@code --byPriority} : entfernt Aufgaben mit der angegebenen Priorität</li>
      *     <li>{@code --byUUID} : entfernt die Aufgabe mit der angegebenen UUID</li>
      * </ul>
-     * Nach erfolgreichem Entfernen werden die Änderungen mittels {@link Data#saveFile(Scheduler)} gespeichert.
+     * Nach erfolgreichem Entfernen werden die Änderungen mittels {@link Data#saveTasks(Scheduler)} gespeichert.
      * </p>
      *
      * @param args Array von Argumenten des Befehls
@@ -52,6 +52,6 @@ public class RemoveCommand implements Command {
             case "--byPriority" -> scheduler.remove(Integer.parseInt(name.toString()));
             case "--byUUID" -> scheduler.remove(UUID.fromString(name.toString()));
         }
-        Data.saveFile(scheduler);
+        Data.saveTasks(scheduler);
     }
 }

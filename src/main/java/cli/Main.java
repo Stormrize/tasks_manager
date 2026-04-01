@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scheduler scheduler = new Scheduler();
-        Data.loadFile(scheduler);
+        Data.loadTasks(scheduler);
 
         scheduler.start();
 
@@ -24,7 +24,7 @@ public class Main {
             String line = scanner.nextLine();
 
             if (line.equals("exit")) {
-                Data.saveFile(scheduler);
+                Data.saveTasks(scheduler);
                 scheduler.shutdown();
                 break;  
             }

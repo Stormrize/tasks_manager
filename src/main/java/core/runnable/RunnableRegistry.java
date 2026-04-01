@@ -1,7 +1,9 @@
 package core.runnable;
 
-import cli.Command;
-
+import core.runnable.CodingChallange.CodingChallange;
+import core.runnable.RandomFact.RandomFact;
+import core.runnable.SpaceFact.SpaceFact;
+import core.runnable.WallpapersChanger.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,14 +14,10 @@ public class RunnableRegistry {
         runnableMap.put("space fact", new SpaceFact());
         runnableMap.put("random fact",new RandomFact());
         runnableMap.put("coding", new CodingChallange());
+        runnableMap.put("hello world", new HelloWorldTest());
+        runnableMap.put("wallpaper", new WallpaperChanger());
     }
 
-    /**
-     * Gibt den Befehl für den angegebenen Namen zurück.
-     *
-     * @param name Name des Befehls
-     * @return {@link Command}-Instanz, oder {@code null}, wenn der Befehl nicht existiert
-     */
     public static Runnable get(String name) {
         return runnableMap.get(name);
     }

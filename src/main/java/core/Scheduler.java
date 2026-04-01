@@ -1,7 +1,8 @@
 package core;
 
-import core.runnable.SpaceFact;
+import storage.Data;
 
+import java.time.Duration;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -52,7 +53,8 @@ public class Scheduler {
                             "\nName : " + task.getName() +
                             "\nPriority : " + task.getPriority() +
                             "\nExecution: " + local +
-                            "\nAction " + task.getAction().toString()
+                            "\nAction " + task.getAction().toString() +
+                            "\nRepeatInterval " + task.getRepeatInterval()
             );
         }
     }
@@ -76,8 +78,8 @@ public class Scheduler {
      * @param priority Priorität der Aufgabe
      * @param executeAT Zeitpunkt der Ausführung
      */
-    public void addTask(String name, int priority, Instant executeAT, Runnable action) {
-        Task task = new Task(name, priority, executeAT, action);
+    public void addTask(String name, byte priority, Instant executeAT, Runnable action, Duration repeatInterval) {
+        Task task = new Task(name, priority, executeAT, action, repeatInterval);
         addTask(task);
     }
 
@@ -89,8 +91,8 @@ public class Scheduler {
      * @param priority Priorität der Aufgabe
      * @param executeAT Zeitpunkt der Ausführung
      */
-    public void addTask(UUID id, String name, int priority, Instant executeAT, Runnable action) {
-        Task task = new Task(id, name, priority, executeAT, action);
+    public void addTask(UUID id, String name, byte priority, Instant executeAT, Runnable action, Duration repeatInterval) {
+        Task task = new Task(id, name, priority, executeAT, action, repeatInterval);
         addTask(task);
     }
 
@@ -182,6 +184,16 @@ public class Scheduler {
         ScheduledFuture<?> f = executor.schedule(() -> {
             try {
                 task.getAction().run();
+                if (task.getRepeatInterval() != null) {
+                    String name = task.getName();
+                    byte priority = task.getPriority();
+                    Runnable action = task.getAction();
+                    Duration repeatInterval = task.getRepeatInterval();
+                    Instant executeAt = task.getExecuteAT().plus(repeatInterval);
+                    Task next = new Task(name, priority, executeAt, action, repeatInterval);
+                    addTask(next);
+                    Data.saveTasks(this);
+                }
             } finally {
                 synchronized (this) {
                     scheduled.remove(task.getId());
@@ -237,7 +249,7 @@ public class Scheduler {
      * @param id UUID der Aufgabe
      * @param newPriority neue Priorität
      */
-    public void changePriority(UUID id, int newPriority) {
+    public void changePriority(UUID id, byte newPriority) {
         ScheduledFuture<?> future;
         Task newTask;
         for (Task task : snapshot()) {

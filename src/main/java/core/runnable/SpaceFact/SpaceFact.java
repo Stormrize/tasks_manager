@@ -1,11 +1,10 @@
-package core.runnable;
+package core.runnable.SpaceFact;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import gui.popups.SpaceFactGui;
 import javafx.application.Platform;
 import storage.DOT.SpaceFactData;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.net.URI;
